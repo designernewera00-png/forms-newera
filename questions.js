@@ -15,14 +15,15 @@ const FORM_CONFIG = {
         {
           id: "nome_completo",
           type: "text",
-          label: "Seu nome completo e nome profissional usado nas redes sociais.",
+          label: "Seu nome completo",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "formacao",
           type: "text",
-          label: "Formação e principais certificações/cursos (ex: fisioterapia + harmonização facial, botox, etc.)",
+          label:
+            "Formação e principais certificações/cursos (ex: fisioterapia + harmonização facial, botox, etc.)",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -51,14 +52,16 @@ const FORM_CONFIG = {
         {
           id: "procedimento_carro_chefe",
           type: "text",
-          label: 'Qual é o procedimento "carro-chefe" -  o mais procurado ou o que quer mais divulgar?',
+          label:
+            'Qual é o procedimento "carro-chefe" -  o mais procurado ou o que quer mais divulgar?',
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "locais_dias_atendimento",
           type: "text",
-          label: "Locais e dias de atendimento? (Pelotas / Bagé — colocar endereços e frequência em cada um)",
+          label:
+            "Locais e dias de atendimento? (Pelotas / Bagé — colocar endereços e frequência em cada um)",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -80,14 +83,16 @@ const FORM_CONFIG = {
         {
           id: "material_apoio",
           type: "choice",
-          label: "Já existe material de apoio disponível? (fotos antes/depois, depoimentos gravados, fotos do espaço)",
+          label:
+            "Já existe material de apoio disponível? (fotos antes/depois, depoimentos gravados, fotos do espaço)",
           options: ["Sim", "Não"],
           required: true,
         },
         {
           id: "nunca_mostrar",
           type: "text",
-          label: "Existe algo que NUNCA pode ser mostrado ou dito? (ex: valores de procedimento, comparação com concorrentes, promessas de resultado — questão de regulamentação da área de estética/saúde)",
+          label:
+            "Existe algo que NUNCA pode ser mostrado ou dito? (ex: valores de procedimento, comparação com concorrentes, promessas de resultado — questão de regulamentação da área de estética/saúde)",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -102,28 +107,32 @@ const FORM_CONFIG = {
         {
           id: "virada_fisio_estetica",
           type: "text",
-          label: "Como foi a virada de fisioterapia para estética? O que te fez seguir por esse caminho?",
+          label:
+            "Como foi a virada de fisioterapia para estética? O que te fez seguir por esse caminho?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "encanto_resultado",
           type: "text",
-          label: "O que mais te encanta em ver o resultado de um procedimento em uma paciente?",
+          label:
+            "O que mais te encanta em ver o resultado de um procedimento em uma paciente?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "bage_familia",
           type: "text",
-          label: "Fale sobre Bagé — sua família mora lá, você atende lá uma vez por mês. Isso é algo que você quer que apareça no conteúdo, como parte da sua história?",
+          label:
+            "Fale sobre Bagé — sua família mora lá, você atende lá uma vez por mês. Isso é algo que você quer que apareça no conteúdo, como parte da sua história?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "comentarios_clientes",
           type: "text",
-          label: "O que as clientes mais comentam sobre o atendimento (fora o resultado técnico)?",
+          label:
+            "O que as clientes mais comentam sobre o atendimento (fora o resultado técnico)?",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -145,42 +154,48 @@ const FORM_CONFIG = {
         {
           id: "formato_parcerias",
           type: "text",
-          label: "Como você gostaria que essas parcerias aparecessem na comunicação? (Ex: um vídeo mais espontâneo mostrando os produtos e bastidores ou algo mais direto, com você apresentando a ação.)",
+          label:
+            "Como você gostaria que essas parcerias aparecessem na comunicação? (Ex: um vídeo mais espontâneo mostrando os produtos e bastidores ou algo mais direto, com você apresentando a ação.)",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "condicao_especial",
           type: "text",
-          label: "Terá alguma condição especial para as pacientes que agendarem durante o mês?",
+          label:
+            "Terá alguma condição especial para as pacientes que agendarem durante o mês?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "dia_cliente_pelotas_bage",
           type: "text",
-          label: "Como você está imaginando o Dia do Cliente em Pelotas e em Bagé? Haverá alguma diferença entre as duas ações?",
+          label:
+            "Como você está imaginando o Dia do Cliente em Pelotas e em Bagé? Haverá alguma diferença entre as duas ações?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "elemento_especial_1",
           type: "text",
-          label: "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia?",
+          label:
+            "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "elemento_especial_2",
           type: "text",
-          label: "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia? (Ex: decoração, doces, espumante, brindes ou outros detalhes.)",
+          label:
+            "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia? (Ex: decoração, doces, espumante, brindes ou outros detalhes.)",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "info_obrigatoria",
           type: "text",
-          label: "Existe alguma informação ou condição da campanha que precisa aparecer obrigatoriamente nos vídeos?",
+          label:
+            "Existe alguma informação ou condição da campanha que precisa aparecer obrigatoriamente nos vídeos?",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -195,7 +210,8 @@ const FORM_CONFIG = {
         {
           id: "perfil_cliente",
           type: "text",
-          label: "Quem é a cliente que mais frequenta seu espaço atualmente? (Idade, perfil, rotina, principais interesses e o que costuma buscar.)",
+          label:
+            "Quem é a cliente que mais frequenta seu espaço atualmente? (Idade, perfil, rotina, principais interesses e o que costuma buscar.)",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -210,13 +226,18 @@ const FORM_CONFIG = {
           id: "percepcao_videos",
           type: "choice",
           label: "Como você gostaria de ser percebida nos vídeos?",
-          options: ["Mais técnica/especialista", "Mais acolhedora/próxima", "Combinação dos dois"],
+          options: [
+            "Mais técnica/especialista",
+            "Mais acolhedora/próxima",
+            "Combinação dos dois",
+          ],
           required: true,
         },
         {
           id: "referencia_comunicacao",
           type: "text",
-          label: "Existe algum perfil, profissional ou clínica que você admira pela forma como se comunica? O que você gosta nessa comunicação?",
+          label:
+            "Existe algum perfil, profissional ou clínica que você admira pela forma como se comunica? O que você gosta nessa comunicação?",
           placeholder: "Escreva aqui...",
           required: true,
         },
@@ -231,21 +252,24 @@ const FORM_CONFIG = {
         {
           id: "bastidores",
           type: "text",
-          label: "Além de vídeos falando com a câmera, você gostaria de mostrar mais bastidores da rotina, atendimentos, espaço e equipe?",
+          label:
+            "Além de vídeos falando com a câmera, você gostaria de mostrar mais bastidores da rotina, atendimentos, espaço e equipe?",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "formatos_sentido",
           type: "text",
-          label: "Quais formatos fazem mais sentido para você neste momento? (Ex: conteúdos educativos, rotina/bastidores, procedimentos, histórias pessoais, depoimentos, campanhas ou conteúdos mais comerciais.)",
+          label:
+            "Quais formatos fazem mais sentido para você neste momento? (Ex: conteúdos educativos, rotina/bastidores, procedimentos, histórias pessoais, depoimentos, campanhas ou conteúdos mais comerciais.)",
           placeholder: "Escreva aqui...",
           required: true,
         },
         {
           id: "conteudo_evitar",
           type: "text",
-          label: "Existe algum tipo de conteúdo que você não gostaria de produzir?",
+          label:
+            "Existe algum tipo de conteúdo que você não gostaria de produzir?",
           placeholder: "Escreva aqui...",
           required: true,
         },
