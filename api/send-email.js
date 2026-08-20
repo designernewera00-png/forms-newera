@@ -61,7 +61,7 @@ function buildHtml(clientName, pages, answers) {
   pages.forEach((page) => {
     body += `<h2 style="font-family:sans-serif;margin-top:32px;">${escapeHtml(page.title)}</h2>`;
     page.questions.forEach((q) => {
-      const answer = answers[q.id];
+      const answer = Array.isArray(answers[q.id]) ? answers[q.id].join(", ") : answers[q.id];
       const displayAnswer = answer && String(answer).trim() ? escapeHtml(answer) : "(não respondido)";
       body += `
         <div style="margin:16px 0;font-family:sans-serif;">

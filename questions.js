@@ -273,6 +273,23 @@ const FORM_CONFIG = {
           placeholder: "Escreva aqui...",
           required: true,
         },
+        {
+          id: "estilo_video",
+          type: "multi_choice",
+          label:
+            "Qual estilo de vídeo combina mais com vocês? Pode selecionar mais de uma opção.",
+          max: 3,
+          options: [
+            "DINÂMICO — cortes rápidos, movimento e energia.",
+            "CINEMATOGRÁFICO — estética trabalhada e storytelling.",
+            "HUMANIZADO — falando diretamente com o público.",
+            "INSTITUCIONAL — estrutura, equipe e autoridade.",
+            "EDUCATIVO — explicações, dicas e conhecimento.",
+            "DESCONTRAÍDO — conteúdo leve, espontâneo e próximo.",
+            "NÃO SABEMOS — queremos a orientação da New Era.",
+          ],
+          required: true,
+        },
       ],
     },
   ],

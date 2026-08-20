@@ -79,6 +79,48 @@
         });
 
         wrap.appendChild(choiceWrap);
+      } else if (q.type === "multi_choice") {
+        const max = q.max || Infinity;
+        answers[q.id] = [];
+
+        const choiceWrap = document.createElement("div");
+        choiceWrap.className = "bloco-checkbox bloco-checkbox--grid";
+        choiceWrap.dataset.qid = q.id;
+
+        q.options.forEach((optionLabel) => {
+          const opt = document.createElement("div");
+          opt.className = "checkbox-option checkbox-option--wrap";
+          opt.dataset.value = optionLabel;
+          opt.innerHTML = `
+            <img src="assets/checkbox-unchecked.svg" alt="" />
+            <span>${optionLabel}</span>
+          `;
+          opt.addEventListener("click", () => {
+            const selected = answers[q.id];
+            const isSelected = selected.includes(optionLabel);
+
+            if (isSelected) {
+              answers[q.id] = selected.filter((v) => v !== optionLabel);
+              opt.classList.remove("selected");
+              opt.querySelector("img").src = "assets/checkbox-unchecked.svg";
+            } else {
+              if (selected.length >= max) return; // já atingiu o limite de seleções
+              answers[q.id].push(optionLabel);
+              opt.classList.add("selected");
+              opt.querySelector("img").src = "assets/checkbox-checked.svg";
+            }
+          });
+          choiceWrap.appendChild(opt);
+        });
+
+        wrap.appendChild(choiceWrap);
+
+        if (q.max) {
+          const hint = document.createElement("span");
+          hint.className = "choice-hint";
+          hint.textContent = `Selecione até ${q.max} opções.`;
+          wrap.appendChild(hint);
+        }
       }
 
       blocoPerguntas.appendChild(wrap);
@@ -146,6 +188,10 @@
         }
       } else if (q.type === "choice") {
         if (!answers[q.id]) {
+          valid = false;
+        }
+      } else if (q.type === "multi_choice") {
+        if (!answers[q.id] || answers[q.id].length === 0) {
           valid = false;
         }
       }

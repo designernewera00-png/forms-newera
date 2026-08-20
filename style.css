@@ -274,6 +274,32 @@ body {
   white-space: nowrap;
 }
 
+.bloco-checkbox--grid {
+  width: 100%;
+}
+
+.checkbox-option--wrap {
+  align-items: flex-start;
+  width: calc(50% - 6px);
+}
+
+.checkbox-option--wrap span {
+  white-space: normal;
+  line-height: 1.3;
+}
+
+.choice-hint {
+  font-size: 13px;
+  color: var(--color-gray-text);
+  margin-top: -4px;
+}
+
+@media (max-width: 900px) {
+  .checkbox-option--wrap {
+    width: 100%;
+  }
+}
+
 /* ===== Botões ===== */
 
 .btn-primary,
