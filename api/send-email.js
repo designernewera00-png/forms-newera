@@ -36,7 +36,8 @@ export default async function handler(req, res) {
     if (!resendResponse.ok) {
       const errText = await resendResponse.text();
       console.error("Resend error:", errText);
-      return res.status(502).json({ error: "Falha ao enviar e-mail" });
+      // DEBUG TEMPORÁRIO: expõe o erro real do Resend para diagnóstico. Remover depois.
+      return res.status(502).json({ error: "Falha ao enviar e-mail", debug: errText });
     }
 
     return res.status(200).json({ ok: true });
