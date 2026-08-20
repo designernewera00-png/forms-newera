@@ -3,7 +3,7 @@
 // Tipos de campo suportados: "text" (campo de escrita) e "choice" (seleção única estilo checkbox).
 
 const FORM_CONFIG = {
-  clientName: "[Nome do Cliente]", // troque pelo nome real do cliente em cada envio
+  clientName: "Edy Barcellos", // troque pelo nome real do cliente em cada envio
 
   pages: [
     {
