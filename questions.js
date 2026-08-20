@@ -1,0 +1,255 @@
+// Estrutura do formulário — edite aqui para adicionar, remover ou alterar perguntas.
+// Cada item do array "pages" é uma tela do formulário.
+// Tipos de campo suportados: "text" (campo de escrita) e "choice" (seleção única estilo checkbox).
+
+const FORM_CONFIG = {
+  clientName: "[Nome do Cliente]", // troque pelo nome real do cliente em cada envio
+
+  pages: [
+    {
+      id: "pag_01",
+      progress: "01/08",
+      eyebrow: "Queremos te conhecer!",
+      title: "Conte mais sobre você.",
+      questions: [
+        {
+          id: "nome_completo",
+          type: "text",
+          label: "Seu nome completo e nome profissional usado nas redes sociais.",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "formacao",
+          type: "text",
+          label: "Formação e principais certificações/cursos (ex: fisioterapia + harmonização facial, botox, etc.)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "tempo_atuacao",
+          type: "text",
+          label: "Há quanto tempo atua na área de estética?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_02",
+      progress: "02/08",
+      eyebrow: "Queremos te conhecer!",
+      title: "Conte mais sobre seus serviços/produtos.",
+      questions: [
+        {
+          id: "principais_procedimentos",
+          type: "text",
+          label: "Principais procedimentos que oferece hoje (liste todos).",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "procedimento_carro_chefe",
+          type: "text",
+          label: 'Qual é o procedimento "carro-chefe" -  o mais procurado ou o que quer mais divulgar?',
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "locais_dias_atendimento",
+          type: "text",
+          label: "Locais e dias de atendimento? (Pelotas / Bagé — colocar endereços e frequência em cada um)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_03",
+      progress: "03/08",
+      eyebrow: "audiovisual",
+      title: "Conte mais sobre seus serviços/produtos.",
+      questions: [
+        {
+          id: "redes_sociais",
+          type: "text",
+          label: "Cite suas redes sociais atuais (@):",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "material_apoio",
+          type: "choice",
+          label: "Já existe material de apoio disponível? (fotos antes/depois, depoimentos gravados, fotos do espaço)",
+          options: ["Sim", "Não"],
+          required: true,
+        },
+        {
+          id: "nunca_mostrar",
+          type: "text",
+          label: "Existe algo que NUNCA pode ser mostrado ou dito? (ex: valores de procedimento, comparação com concorrentes, promessas de resultado — questão de regulamentação da área de estética/saúde)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_04",
+      progress: "04/08",
+      eyebrow: "audiovisual",
+      title: "Trajetória pessoal (Construção de storytelling).",
+      questions: [
+        {
+          id: "virada_fisio_estetica",
+          type: "text",
+          label: "Como foi a virada de fisioterapia para estética? O que te fez seguir por esse caminho?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "encanto_resultado",
+          type: "text",
+          label: "O que mais te encanta em ver o resultado de um procedimento em uma paciente?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "bage_familia",
+          type: "text",
+          label: "Fale sobre Bagé — sua família mora lá, você atende lá uma vez por mês. Isso é algo que você quer que apareça no conteúdo, como parte da sua história?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "comentarios_clientes",
+          type: "text",
+          label: "O que as clientes mais comentam sobre o atendimento (fora o resultado técnico)?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_05",
+      progress: "05/08",
+      eyebrow: "audiovisual",
+      title: 'Campanha "Mês do Cliente" — Setembro.',
+      questions: [
+        {
+          id: "acoes_parcerias",
+          type: "text",
+          label: "Quais ações e parcerias já estão confirmadas para setembro?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "formato_parcerias",
+          type: "text",
+          label: "Como você gostaria que essas parcerias aparecessem na comunicação? (Ex: um vídeo mais espontâneo mostrando os produtos e bastidores ou algo mais direto, com você apresentando a ação.)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "condicao_especial",
+          type: "text",
+          label: "Terá alguma condição especial para as pacientes que agendarem durante o mês?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "dia_cliente_pelotas_bage",
+          type: "text",
+          label: "Como você está imaginando o Dia do Cliente em Pelotas e em Bagé? Haverá alguma diferença entre as duas ações?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "elemento_especial_1",
+          type: "text",
+          label: "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "elemento_especial_2",
+          type: "text",
+          label: "Você já pensou em algum elemento especial para tornar a experiência das clientes diferente nesse dia? (Ex: decoração, doces, espumante, brindes ou outros detalhes.)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "info_obrigatoria",
+          type: "text",
+          label: "Existe alguma informação ou condição da campanha que precisa aparecer obrigatoriamente nos vídeos?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_06",
+      progress: "06/08",
+      eyebrow: "audiovisual",
+      title: "Público & Tom de Voz.",
+      questions: [
+        {
+          id: "perfil_cliente",
+          type: "text",
+          label: "Quem é a cliente que mais frequenta seu espaço atualmente? (Idade, perfil, rotina, principais interesses e o que costuma buscar.)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "motivo_procura",
+          type: "text",
+          label: "O que normalmente leva essa cliente a procurar você?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "percepcao_videos",
+          type: "choice",
+          label: "Como você gostaria de ser percebida nos vídeos?",
+          options: ["Mais técnica/especialista", "Mais acolhedora/próxima", "Combinação dos dois"],
+          required: true,
+        },
+        {
+          id: "referencia_comunicacao",
+          type: "text",
+          label: "Existe algum perfil, profissional ou clínica que você admira pela forma como se comunica? O que você gosta nessa comunicação?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+    {
+      id: "pag_07",
+      progress: "07/08",
+      eyebrow: "audiovisual",
+      title: "Formato dos vídeos.",
+      questions: [
+        {
+          id: "bastidores",
+          type: "text",
+          label: "Além de vídeos falando com a câmera, você gostaria de mostrar mais bastidores da rotina, atendimentos, espaço e equipe?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "formatos_sentido",
+          type: "text",
+          label: "Quais formatos fazem mais sentido para você neste momento? (Ex: conteúdos educativos, rotina/bastidores, procedimentos, histórias pessoais, depoimentos, campanhas ou conteúdos mais comerciais.)",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+        {
+          id: "conteudo_evitar",
+          type: "text",
+          label: "Existe algum tipo de conteúdo que você não gostaria de produzir?",
+          placeholder: "Escreva aqui...",
+          required: true,
+        },
+      ],
+    },
+  ],
+};

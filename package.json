@@ -1,0 +1,7 @@
+{
+  "name": "forms-newera",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Formulário personalizado New Era Digital — front-end estático + função serverless de envio de e-mail (Resend)."
+}

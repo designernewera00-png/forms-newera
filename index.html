@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Era Digital — Formulário</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== Header (fixo, mudado via JS entre "Bem-vindo(a)" e contador de progresso) ===== -->
+  <header class="topo">
+    <div class="logo">
+      <img src="assets/logo-icon.svg" alt="" />
+      <img src="assets/logo-text.svg" alt="New Era Digital" />
+    </div>
+    <span class="welcome" id="header-right">Bem-vindo(a)</span>
+  </header>
+
+  <!-- ===== Tela Home ===== -->
+  <section class="screen active" id="screen-home">
+    <img src="assets/glow-bg.svg" alt="" class="glow-bg" />
+    <div class="home-content">
+      <div>
+        <h1 id="home-greeting">Olá, [Nome do Cliente]</h1>
+        <h2>Obrigado por confiar seu projeto à <strong>New Era Digital.</strong></h2>
+      </div>
+      <p class="home-desc">Suas respostas serão a base para criarmos um projeto alinhado ao que seu negócio realmente precisa.</p>
+      <div class="home-cta-block">
+        <button class="btn-primary-home" id="btn-start">
+          Vamos Começar
+          <img src="assets/arrow-right.svg" alt="" />
+        </button>
+        <span class="home-note">Leva cerca de 5 a 10 minutos.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Telas de perguntas (geradas dinamicamente via JS a partir de questions.js) ===== -->
+  <div id="questions-container"></div>
+
+  <!-- ===== Tela de Conclusão ===== -->
+  <section class="screen" id="screen-conclusao">
+    <div class="screen-inner">
+      <div class="bloco-texto">
+        <span class="eyebrow">new era digital</span>
+        <h1 class="conclusao-titulo">Agradecemos por confiar seu negócio à nossa equipe. Agora vamos analisar suas respostas e dar início à criação do seu projeto.</h1>
+      </div>
+      <p class="conclusao-final">Viva a nova era!</p>
+      <p class="download-status" id="download-status"></p>
+    </div>
+  </section>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

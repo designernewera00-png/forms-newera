@@ -1,0 +1,407 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap");
+
+:root {
+  --color-black: #000000;
+  --color-green: #19fd62;
+  --color-white: #ffffff;
+  --color-gray-text: #b3b3b3;
+  --color-gray-placeholder: #999999;
+  --color-input-bg: rgba(255, 255, 255, 0.05);
+  --color-input-border: rgba(153, 153, 153, 0.3);
+  --color-header-border: rgba(255, 255, 255, 0.25);
+  --font-main: "DM Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-black);
+  color: var(--color-white);
+  font-family: var(--font-main);
+  overflow-x: hidden;
+}
+
+/* ===== Header ===== */
+
+.topo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 80px;
+  border-bottom: 0.7px solid var(--color-header-border);
+  background: var(--color-black);
+  z-index: 10;
+}
+
+.topo .logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 23px;
+}
+
+.topo .logo img {
+  height: 100%;
+  width: auto;
+}
+
+.topo .progress,
+.topo .welcome {
+  font-size: 14px;
+  letter-spacing: -0.56px;
+  color: var(--color-white);
+}
+
+/* ===== Layout de telas ===== */
+
+.screen {
+  display: none;
+  min-height: 100vh;
+  padding: 140px 80px 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+.screen-inner {
+  width: 100%;
+  max-width: 846px;
+}
+
+/* ===== Home ===== */
+
+#screen-home {
+  position: relative;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+}
+
+#screen-home .glow-bg {
+  position: absolute;
+  bottom: -220px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1608px;
+  max-width: none;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+#screen-home .home-content {
+  position: relative;
+  z-index: 1;
+  max-width: 738px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+#screen-home h1 {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -1.68px;
+  line-height: 1.1;
+}
+
+#screen-home h2 {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -1.28px;
+  line-height: 1.1;
+  margin-top: 10px;
+}
+
+#screen-home h2 strong {
+  color: var(--color-green);
+  font-weight: 600;
+}
+
+#screen-home .home-desc {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.88px;
+  line-height: 1.3;
+  color: var(--color-gray-text);
+}
+
+#screen-home .home-cta-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+#screen-home .home-note {
+  font-size: 12px;
+  letter-spacing: -0.48px;
+  color: var(--color-gray-text);
+}
+
+/* ===== Blocos de pergunta ===== */
+
+.bloco-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.eyebrow {
+  color: var(--color-green);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+}
+
+.page-title {
+  font-size: 42px;
+  font-weight: 400;
+  letter-spacing: -1.68px;
+  line-height: 1.1;
+}
+
+.bloco-perguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-end;
+}
+
+.pergunta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.pergunta label {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.72px;
+  line-height: 1.3;
+}
+
+.pergunta label .hint {
+  font-weight: 400;
+}
+
+.bloco-escrever {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  padding: 20px;
+}
+
+.bloco-escrever textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  color: var(--color-white);
+  font-family: var(--font-main);
+  font-size: 16px;
+  letter-spacing: -0.64px;
+  line-height: 1.3;
+  min-height: 21px;
+}
+
+.bloco-escrever textarea::placeholder {
+  color: var(--color-gray-placeholder);
+}
+
+.bloco-escrever.error {
+  border-color: #ff5c5c;
+}
+
+/* ===== Choice / checkbox ===== */
+
+.bloco-checkbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-input-border);
+  padding: 12px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s ease;
+}
+
+.checkbox-option:hover {
+  border-color: rgba(153, 153, 153, 0.6);
+}
+
+.checkbox-option.selected {
+  border-color: var(--color-green);
+}
+
+.checkbox-option img {
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-option span {
+  font-size: 16px;
+  letter-spacing: -0.64px;
+  white-space: nowrap;
+}
+
+/* ===== Botões ===== */
+
+.btn-primary,
+.btn-primary-home,
+.btn-back {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 6px;
+  background: var(--color-green);
+  color: var(--color-black);
+  border: none;
+  padding: 18px 20px;
+  font-family: var(--font-main);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.72px;
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+
+.btn-primary {
+  width: 180px;
+}
+
+.btn-primary:hover,
+.btn-primary-home:hover,
+.btn-back:hover {
+  opacity: 0.85;
+}
+
+.btn-primary img,
+.btn-primary-home img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.btn-back {
+  background: transparent;
+  color: rgba(153, 153, 153, 0.6);
+  font-size: 16px;
+}
+
+.btn-back img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  transform: scaleX(-1);
+  filter: invert(1);
+}
+
+.btn-next-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* ===== Conclusão ===== */
+
+#screen-conclusao .screen-inner {
+  max-width: 670px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+
+#screen-conclusao .conclusao-titulo {
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -1.28px;
+  line-height: 1.1;
+}
+
+#screen-conclusao .conclusao-final {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
+}
+
+.download-status {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--color-gray-text);
+  min-height: 20px;
+}
+
+.download-status.success {
+  color: var(--color-green);
+}
+
+.download-status.error {
+  color: #ff5c5c;
+}
+
+/* ===== Responsivo ===== */
+
+@media (max-width: 900px) {
+  .topo {
+    padding: 16px 24px;
+  }
+
+  .screen {
+    padding: 100px 24px 60px;
+  }
+
+  #screen-home h1 {
+    font-size: 32px;
+  }
+
+  #screen-home h2 {
+    font-size: 24px;
+  }
+
+  .page-title {
+    font-size: 28px;
+  }
+
+  .btn-next-wrap {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}
