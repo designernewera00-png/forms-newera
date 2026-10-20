@@ -235,6 +235,16 @@ body {
   border-color: #ff5c5c;
 }
 
+/* Campo "Outro" — escondido até a opção Outro ser marcada */
+.bloco-outro {
+  display: none;
+  margin-top: 12px;
+}
+
+.bloco-outro.visible {
+  display: block;
+}
+
 /* ===== Choice / checkbox ===== */
 
 .bloco-checkbox {

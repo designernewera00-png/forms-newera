@@ -58,6 +58,15 @@
         choiceWrap.className = "bloco-checkbox";
         choiceWrap.dataset.qid = q.id;
 
+        // Campo "Outro" (só aparece quando a opção Outro é marcada)
+        const hasOutro = q.options.some(isOutro);
+        let outroBox = null;
+        let outroTextarea = null;
+        const outroValue = () => {
+          const txt = outroTextarea ? outroTextarea.value.trim() : "";
+          return txt ? `Outro: ${txt}` : "Outro";
+        };
+
         q.options.forEach((optionLabel) => {
           const opt = document.createElement("div");
           opt.className = "checkbox-option";
@@ -73,12 +82,36 @@
             });
             opt.classList.add("selected");
             opt.querySelector("img").src = "assets/checkbox-checked.svg";
-            answers[q.id] = optionLabel;
+
+            if (isOutro(optionLabel)) {
+              answers[q.id] = outroValue();
+              if (outroBox) {
+                outroBox.classList.add("visible");
+                outroTextarea.focus();
+              }
+            } else {
+              answers[q.id] = optionLabel;
+              if (outroBox) {
+                outroBox.classList.remove("visible", "error");
+                outroTextarea.value = "";
+              }
+            }
           });
           choiceWrap.appendChild(opt);
         });
 
         wrap.appendChild(choiceWrap);
+
+        if (hasOutro) {
+          outroBox = createOutroBox(q.id);
+          outroTextarea = outroBox.querySelector("textarea");
+          outroTextarea.addEventListener("input", () => {
+            autoGrow(outroTextarea);
+            answers[q.id] = outroValue();
+            outroBox.classList.remove("error");
+          });
+          wrap.appendChild(outroBox);
+        }
       } else if (q.type === "multi_choice") {
         const max = q.max || Infinity;
         answers[q.id] = [];
@@ -87,7 +120,17 @@
         choiceWrap.className = "bloco-checkbox bloco-checkbox--grid";
         choiceWrap.dataset.qid = q.id;
 
+        // Campo "Outro" (só aparece quando a opção Outro é marcada)
+        const hasOutro = q.options.some(isOutro);
+        let outroBox = null;
+        let outroTextarea = null;
+        const outroValue = () => {
+          const txt = outroTextarea ? outroTextarea.value.trim() : "";
+          return txt ? `Outro: ${txt}` : "Outro";
+        };
+
         q.options.forEach((optionLabel) => {
+          const optIsOutro = isOutro(optionLabel);
           const opt = document.createElement("div");
           opt.className = "checkbox-option checkbox-option--wrap";
           opt.dataset.value = optionLabel;
@@ -97,17 +140,26 @@
           `;
           opt.addEventListener("click", () => {
             const selected = answers[q.id];
-            const isSelected = selected.includes(optionLabel);
+            // para a opção Outro, qualquer valor começando com "Outro" conta como marcado
+            const idx = selected.findIndex((v) => (optIsOutro ? isOutro(v) : v === optionLabel));
 
-            if (isSelected) {
-              answers[q.id] = selected.filter((v) => v !== optionLabel);
+            if (idx !== -1) {
+              answers[q.id] = selected.filter((_, i) => i !== idx);
               opt.classList.remove("selected");
               opt.querySelector("img").src = "assets/checkbox-unchecked.svg";
+              if (optIsOutro && outroBox) {
+                outroBox.classList.remove("visible", "error");
+                outroTextarea.value = "";
+              }
             } else {
               if (selected.length >= max) return; // já atingiu o limite de seleções
-              answers[q.id].push(optionLabel);
+              answers[q.id].push(optIsOutro ? outroValue() : optionLabel);
               opt.classList.add("selected");
               opt.querySelector("img").src = "assets/checkbox-checked.svg";
+              if (optIsOutro && outroBox) {
+                outroBox.classList.add("visible");
+                outroTextarea.focus();
+              }
             }
           });
           choiceWrap.appendChild(opt);
@@ -120,6 +172,18 @@
           hint.className = "choice-hint";
           hint.textContent = `Selecione até ${q.max} opções.`;
           wrap.appendChild(hint);
+        }
+
+        if (hasOutro) {
+          outroBox = createOutroBox(q.id);
+          outroTextarea = outroBox.querySelector("textarea");
+          outroTextarea.addEventListener("input", () => {
+            autoGrow(outroTextarea);
+            const idx = answers[q.id].findIndex(isOutro);
+            if (idx !== -1) answers[q.id][idx] = outroValue();
+            outroBox.classList.remove("error");
+          });
+          wrap.appendChild(outroBox);
         }
       }
 
@@ -153,6 +217,23 @@
     textarea.style.height = textarea.scrollHeight + "px";
   }
 
+  // Reconhece a opção "Outro" (ex.: "Outro", "Outro ", "outros")
+  function isOutro(label) {
+    return /^outro/i.test(String(label).trim());
+  }
+
+  // Cria o campo de texto que aparece ao marcar "Outro"
+  function createOutroBox(qid) {
+    const box = document.createElement("div");
+    box.className = "bloco-escrever bloco-outro";
+    box.dataset.outroFor = qid;
+    const textarea = document.createElement("textarea");
+    textarea.rows = 1;
+    textarea.placeholder = "Qual? Escreva aqui...";
+    box.appendChild(textarea);
+    return box;
+  }
+
   // ---------- Navegação ----------
 
   function showScreen(index) {
@@ -163,7 +244,7 @@
       headerRight.textContent = "Bem-vindo(a)";
     } else if (index === FORM_CONFIG.pages.length) {
       document.getElementById("screen-conclusao").classList.add("active");
-      headerRight.textContent = "08/08";
+      headerRight.textContent = FORM_CONFIG.pages[FORM_CONFIG.pages.length - 1].progress;
     } else {
       const page = FORM_CONFIG.pages[index];
       document.getElementById(`screen-${page.id}`).classList.add("active");
@@ -189,15 +270,27 @@
       } else if (q.type === "choice") {
         if (!answers[q.id]) {
           valid = false;
+        } else if (answers[q.id] === "Outro") {
+          // "Outro" marcado mas sem texto escrito
+          markOutroError(q.id);
+          valid = false;
         }
       } else if (q.type === "multi_choice") {
         if (!answers[q.id] || answers[q.id].length === 0) {
+          valid = false;
+        } else if (answers[q.id].some((v) => v === "Outro")) {
+          markOutroError(q.id);
           valid = false;
         }
       }
     });
 
     return valid;
+  }
+
+  function markOutroError(qid) {
+    const box = document.querySelector(`[data-outro-for="${qid}"]`);
+    if (box) box.classList.add("error");
   }
 
   function handleNext(page, pageIndex) {
