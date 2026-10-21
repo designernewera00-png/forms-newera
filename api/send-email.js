@@ -18,6 +18,10 @@ export default async function handler(req, res) {
 
   const html = buildHtml(clientName, pages, answers);
 
+  // Nome da empresa preenchido no formulário (campo "empresa_nome"), para o assunto do e-mail
+  const empresaNome =
+    (answers.empresa_nome && String(answers.empresa_nome).trim()) || "Empresa não informada";
+
   try {
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -28,7 +32,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: process.env.FROM_EMAIL,
         to: process.env.TO_EMAIL,
-        subject: `Novas respostas do formulário — ${clientName || "Cliente"}`,
+        subject: `Briefing de Performance - ${empresaNome}`,
         html,
       }),
     });
